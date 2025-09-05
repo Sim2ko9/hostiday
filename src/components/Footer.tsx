@@ -1,4 +1,4 @@
-import hostidayLogo from "@/assets/hostiday-logo-new.png";
+import hostidayLogo from "@/assets/NewLogo.png";
 
 interface FooterProps {
   language: 'sk' | 'en';
@@ -41,7 +41,7 @@ const Footer = ({ language }: FooterProps) => {
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Brand Section */}
-          <div className="md:col-span-1">
+          <div className="md:col-span-1 pl-8 pr-16">
             <div className="flex items-center space-x-3 mb-4">
               <img 
                 src={hostidayLogo} 
@@ -59,7 +59,7 @@ const Footer = ({ language }: FooterProps) => {
           </div>
 
           {/* Navigation */}
-          <div>
+          <div className="pr-4">
             <h3 className="text-lg font-semibold mb-4">{t.navigation}</h3>
             <ul className="space-y-2">
               <li>
@@ -90,7 +90,7 @@ const Footer = ({ language }: FooterProps) => {
           </div>
 
           {/* Legal */}
-          <div>
+          <div className="pr-4">
             <h3 className="text-lg font-semibold mb-4">{t.legal}</h3>
             <ul className="space-y-2">
               <li>
@@ -107,7 +107,7 @@ const Footer = ({ language }: FooterProps) => {
           </div>
 
           {/* Connect */}
-          <div>
+          <div className="pr-8">
             <h3 className="text-lg font-semibold mb-4">{t.connect}</h3>
             <div className="flex space-x-4">
               <a 

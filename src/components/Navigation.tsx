@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
-import hostidayLogo from "@/assets/hostiday-logo-new.png";
+import hostidayLogo from "@/assets/NewLogo.png";
 
 interface NavigationProps {
   language: 'sk' | 'en';
@@ -35,7 +35,7 @@ const Navigation = ({ language, onLanguageChange }: NavigationProps) => {
       <div className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <div className="flex items-center space-x-3">
+          <div className="flex items-center space-x-3 w-1/3">
             <img 
               src={hostidayLogo} 
               alt="Hostiday Logo" 
@@ -44,19 +44,13 @@ const Navigation = ({ language, onLanguageChange }: NavigationProps) => {
             <span className="text-white font-bold text-xl">Hostiday</span>
           </div>
 
-          {/* Navigation Items */}
-          <div className="hidden md:flex items-center space-x-6">
+          {/* Navigation Items - Centered */}
+          <div className="hidden md:flex items-center justify-center space-x-6 w-1/3">
             <button 
-              onClick={() => scrollToSection('services')}
+              onClick={() => scrollToSection('our-services')}
               className="text-white hover:text-white/80 transition-colors"
             >
               {t.services}
-            </button>
-            <button 
-              onClick={() => scrollToSection('calculator')}
-              className="text-white hover:text-white/80 transition-colors"
-            >
-              {t.howItWorks}
             </button>
             <button 
               onClick={() => scrollToSection('services')}
@@ -64,7 +58,10 @@ const Navigation = ({ language, onLanguageChange }: NavigationProps) => {
             >
               {t.pricing}
             </button>
-            
+          </div>
+          
+          {/* Right Section - Language Toggle and Call Button */}
+          <div className="hidden md:flex items-center justify-end space-x-4 w-1/3">
             {/* Language Toggle */}
             <div className="flex items-center space-x-2">
               <button

@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
-import hostidayLogo from "@/assets/hostiday-logo-new.png";
+import hostidayLogo from "@/assets/NewLogo.png";
+import heroBackground from "@/assets/New background.png";
 
 interface HeroProps {
   language: 'sk' | 'en';
@@ -14,15 +15,15 @@ const Hero = ({ language }: HeroProps) => {
   const translations = {
     sk: {
       title: 'Hostiday',
-      headline: 'Správa nehnuteľností, ktorá skutočne funguje',
-      description: 'Prijímame našich prvých 3 klientov. Premeňte svoj krátkodobý prenájom na bezstarostný príjmový tok.',
+      headline: 'Profesionálna správa Airbnb a krátkodobých prenájmov v Bratislave',
+      description: 'Zvýšte svoje príjmy a zbavte sa starostí s prenájmom. Kompletná správa apartmánov a bytov – od hostí až po upratovanie.',
       bookCall: 'Rezervovať bezplatný hovor',
       viewServices: 'Zobraziť naše služby'
     },
     en: {
       title: 'Hostiday',
-      headline: 'Property Management That Actually Works',
-      description: 'We\'re onboarding our first 3 clients. Transform your short-term rental into a hands-free income stream.',
+      headline: 'Professional Airbnb and Short-Term Rental Management in Bratislava',
+      description: 'Boost your rental income and enjoy peace of mind. Full property management – from guest communication to cleaning and maintenance.',
       bookCall: 'Book a Free Intro Call',
       viewServices: 'View Our Services'
     }
@@ -31,8 +32,8 @@ const Hero = ({ language }: HeroProps) => {
   const t = translations[language];
 
   return (
-    <section className="min-h-screen flex items-center justify-center bg-gradient-hero relative overflow-hidden pt-20">
-      <div className="absolute inset-0 bg-black/10"></div>
+    <section className="min-h-screen flex items-center justify-center relative overflow-hidden pt-20" style={{ backgroundImage: `url(${heroBackground})`, backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat' }}>
+      <div className="absolute inset-0 bg-black/50"></div>
       <div className="container mx-auto px-4 text-center relative z-10">
         <div className="max-w-4xl mx-auto">
           {/* Logo */}
@@ -42,17 +43,17 @@ const Hero = ({ language }: HeroProps) => {
               alt="Hostiday Logo" 
               className="h-20 w-auto mx-auto mb-6"
             />
-            <h1 className="text-5xl md:text-7xl font-bold text-white mb-6">
+            <h1 className="text-3xl md:text-5xl font-bold text-white mb-6">
               {t.title}
             </h1>
           </div>
 
           {/* Main Headline */}
-          <h2 className="text-2xl md:text-4xl font-semibold text-white/90 mb-8">
+          <h2 className="text-xl md:text-3xl font-semibold text-white/90 mb-4">
             {t.headline}
           </h2>
           
-          <p className="text-xl md:text-2xl text-white/80 mb-12 leading-relaxed">
+          <p className="text-base md:text-lg text-white/80 mb-8 leading-relaxed max-w-3xl mx-auto">
             {t.description}
           </p>
 

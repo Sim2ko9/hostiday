@@ -22,127 +22,115 @@ interface ServicesProps {
 const Services = ({ language }: ServicesProps) => {
   const translations = {
     sk: {
-      ourServices: 'Naše služby',
-      servicesDescription: 'Kompletné služby pre maximálny zisk z vašej nehnuteľnosti.',
-      whatWeProvide: 'Čo poskytujeme',
+      ourServices: 'Výhody krátkodobého prenájmu',
+      servicesDescription: 'Prečo si vybrať krátkodobý prenájom s Hostiday.',
+      whatWeProvide: 'Naše služby',
       bookCall: 'Rezervovať bezplatný hovor',
       mostPopular: 'Najobľúbenejšie',
       services: [
         {
-          title: "Rozdelenie príjmov",
-          subtitle: "Program zdieľania zisku 75%/25%",
-          description: "Maximalizujte svoj príjem s naším transparentným systémom zdieľania zisku. Dostávate 75% čistého zisku.",
+          title: "Vyššie výnosy",
+          subtitle: "O 30 % vyšší výnos ako pri dlhodobom prenájme",
+          description: "",
           icon: DollarSign,
-          highlight: "Najobľúbenejšie",
           features: [
-            "75% zdieľanie zisku pre vás",
-            "Kompletná správa nehnuteľnosti",
-            "Marketing a rezervácie",
-            "Komunikácia s hosťami",
-            "Upratovanie a údržba",
-            "Optimalizácia dynamického oceňovania"
+            "Podľa všeobecných dát su výnosy pri krátkodobom prenájme až o 30% vyššie",
+            "Dynamické oceňovanie",
+            "Analýza trhu a konkurencie"
           ]
         },
         {
-          title: "Profesionálna správa",
-          subtitle: "Správa nehnuteľností s plným servisom",
-          description: "Kompletná starostlivosť o vašu nehnuteľnosť prostredníctvom našej služby správy krátkodobých prenájmov.",
+          title: "Bezstarostná správa",
+          subtitle: "My spravujeme, vy zarábate – bez starostí a stresu",
+          description: "",
           icon: FileText,
           features: [
             "Kompletná správa nehnuteľnosti",
-            "Profesionálne služby pre hostí", 
-            "Marketing a reklama",
-            "Koordinácia údržby",
-            "Opravy do 50 EUR mesačne",
-            "Firemné partnerstvá"
+            "Komunikácia s hosťami 24/7", 
+            "Marketing a rezervácie",
+            "Upratovanie a údržba",
+            "Profesionálne fotografie",
+            "Online check-in a smartlock"
           ]
         },
         {
-          title: "Fixný prenájom",
-          subtitle: "Garantovaný mesačný príjem",
-          description: "Fixný mesačný príjem bez rizika voľných období.",
+          title: "Transparentný systém odmeňovania",
+          subtitle: "Čisté a férové podmienky spolupráce",
+          description: "",
           icon: Shield,
           features: [
-            "Garantovaná mesačná platba",
-            "Žiadne riziko voľného obdobia",
-            "Možné vylepšenia zmluvy",
-            "Profesionálne fotografovanie",
-            "Pravidelné upratovanie",
-            "Systematická údržba"
+            "75 % čistého príjmu pre vás",
+            "25 % pre nás za kompletnú správu",
+            "Žiadne skryté poplatky",
+            "Transparentné účtovníctvo",
+            "Mesačné reporty",
+            "Férové podmienky spolupráce"
           ]
         }
       ],
       additionalServices: [
-        { icon: Users, title: "Kompletná správa nehnuteľnosti", description: "Správa nehnuteľnosti bez starostí" },
-        { icon: MessageCircle, title: "Komunikácia s hosťami", description: "Pred, počas a po pobyte" },
-        { icon: Camera, title: "Profesionálne fotografovanie", description: "Ohromujúca prezentácia na platformách" },
-        { icon: Wrench, title: "Údržba a opravy", description: "Opravy pokryté do 50 EUR mesačne" },
-        { icon: Banknote, title: "Firemné partnerstvá", description: "Dlhodobé a krátkodobé prenájmy" },
-        { icon: Key, title: "Smartlock a online check-in", description: "Bezpečnosť a kontrola pre hostí" },
-        { icon: Gift, title: "Spolupráca s firmami", description: "Ubytovanie na dlhšie obdobie" },
-        { icon: Sparkles, title: "Pravidelné upratovanie", description: "Upratovanie hotelového štandardu s kontrolami" }
+        { icon: Users, title: "Kompletná správa nehnuteľnosti", description: "Od prenájmu až po odovzdanie kľúčov – všetko vybavíme za vás." },
+        { icon: MessageCircle, title: "Komunikácia s hosťami", description: "Profesionálna starostlivosť o hostí 24/7." },
+        { icon: Camera, title: "Profesionálne fotografie", description: "Vyniknite na Airbnb a Bookingu kvalitnými fotkami." },
+        { icon: Wrench, title: "Údržba a opravy", description: "Rýchle riešenie problémov, opravy do 50 € mesačne v cene." },
+        { icon: Key, title: "Smartlock a online check-in", description: "Bezpečný vstup a jednoduchý príchod hostí." },
+        { icon: Sparkles, title: "Pravidelné upratovanie", description: "Upratovanie na hotelovej úrovni s kontrolami kvality." }
       ]
     },
     en: {
-      ourServices: 'Our Services',
-      servicesDescription: 'Complete services for maximum profit from your property.',
-      whatWeProvide: 'What We Provide',
+      ourServices: 'Benefits of Short Term Rental',
+      servicesDescription: 'Why choose short-term rental with Hostiday.',
+      whatWeProvide: 'Our Services',
       bookCall: 'Book Your Free Intro Call',
       mostPopular: 'Most Popular',
       services: [
         {
-          title: "Revenue Share",
-          subtitle: "Profit Share Program 75%/25%",
-          description: "Maximize your income with our transparent profit-sharing system. You receive 75% of net profit.",
+          title: "Higher Returns",
+          subtitle: "30% higher revenue compared to long-term rentals",
+          description: "",
           icon: DollarSign,
-          highlight: "Most Popular",
           features: [
-            "75% profit share to you",
-            "Complete property management",
-            "Marketing & bookings",
-            "Guest communication",
-            "Cleaning & maintenance",
-            "Dynamic pricing optimization"
+            "According to general data, short-term rental yields are up to 30% higher",
+            "Dynamic pricing",
+            "Market and competition analysis"
           ]
         },
         {
-          title: "Professional Management",
-          subtitle: "Full-Service Property Management",
-          description: "Complete care for your property through our short-term rental management service.",
+          title: "Stress-Free Management",
+          subtitle: "We manage, you earn – hassle-free",
+          description: "",
           icon: FileText,
           features: [
             "Complete property management",
-            "Professional guest services", 
-            "Marketing & advertising",
-            "Maintenance coordination",
-            "Repairs up to 50 EUR monthly",
-            "Corporate partnerships"
+            "Guest communication 24/7", 
+            "Marketing & bookings",
+            "Cleaning & maintenance",
+            "Professional photography",
+            "Online check-in & smartlock"
           ]
         },
         {
-          title: "Fixed Rental",
-          subtitle: "Guaranteed Monthly Income",
-          description: "Fixed monthly income without the risk of vacancy periods.",
+          title: "Transparent Revenue Sharing",
+          subtitle: "Clear and fair partnership model",
+          description: "",
           icon: Shield,
           features: [
-            "Guaranteed monthly payment",
-            "No vacancy risk",
-            "Possible contract upgrades",
-            "Professional photography",
-            "Regular cleaning",
-            "Systematic maintenance"
+            "75% net profit to you",
+            "25% to us for complete management",
+            "No hidden fees",
+            "Transparent accounting",
+            "Monthly reports",
+            "Fair partnership terms"
           ]
         }
       ],
       additionalServices: [
-        { icon: Users, title: "Complete Property Management", description: "Property management without worries" },
-        { icon: MessageCircle, title: "Guest Communication", description: "Before, during and after stay" },
-        { icon: Camera, title: "Professional Photography", description: "Stunning presentation on platforms" },
-        { icon: Wrench, title: "Maintenance & Repairs", description: "Repairs covered up to 50 EUR monthly" },
-        { icon: Banknote, title: "Corporate Partnerships", description: "Long-term and short-term rentals" },
-        { icon: Key, title: "Smartlock & Online Check-in", description: "Security and control for guests" },
-        { icon: Gift, title: "Collaboration with Companies", description: "Extended timeframe accommodations" },
-        { icon: Sparkles, title: "Regular Cleaning", description: "Hotel-quality cleaning with controls" }
+        { icon: Users, title: "Complete Property Management", description: "From listing to check-out – we handle everything." },
+        { icon: MessageCircle, title: "Guest Communication", description: "Professional care for your guests, 24/7." },
+        { icon: Camera, title: "Professional Photography", description: "Stand out on Airbnb and Booking with stunning photos." },
+        { icon: Wrench, title: "Maintenance & Repairs", description: "Fast solutions, repairs up to €50/month included." },
+        { icon: Key, title: "Smartlock & Online Check-in", description: "Secure and seamless guest arrivals." },
+        { icon: Sparkles, title: "Regular Cleaning", description: "Hotel-level cleaning with quality control." }
       ]
     }
   };
@@ -152,9 +140,9 @@ const Services = ({ language }: ServicesProps) => {
   const additionalServices = t.additionalServices;
 
   return (
-    <section id="services" className="py-20 bg-background">
+    <section id="services" className="py-12 bg-background">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
+        <div className="text-center mb-10">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">{t.ourServices}</h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
             {t.servicesDescription}
@@ -162,9 +150,9 @@ const Services = ({ language }: ServicesProps) => {
         </div>
 
         {/* Main Service Cards */}
-        <div className="grid md:grid-cols-3 gap-8 mb-20">
+        <div className="grid md:grid-cols-3 gap-8 mb-12">
           {services.map((service, index) => (
-            <Card key={index} className={`p-8 relative ${index === 0 ? 'border-primary shadow-coral' : ''}`}>
+            <Card key={index} className="p-8 relative border-primary shadow-coral">
               {service.highlight && (
                 <Badge className="absolute -top-3 left-4 bg-primary text-primary-foreground">
                   {service.highlight}
@@ -193,14 +181,14 @@ const Services = ({ language }: ServicesProps) => {
         </div>
 
         {/* Additional Services */}
-        <div className="text-center mb-12">
-          <h3 className="text-2xl font-bold mb-4">{t.whatWeProvide}</h3>
+        <div id="our-services" className="text-center mb-8">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">{t.whatWeProvide}</h2>
           <p className="text-muted-foreground">
             {t.servicesDescription}
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
           {additionalServices.map((service, index) => (
             <div key={index} className="text-center p-6">
               <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
