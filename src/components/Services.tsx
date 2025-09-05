@@ -15,71 +15,149 @@ import {
   Sparkles
 } from "lucide-react";
 
-const Services = () => {
-  const services = [
-    {
-      title: "Revenue Share",
-      subtitle: "Profit Share Program 75%/25%",
-      description: "Maximize your income with our transparent profit-sharing system. You receive 75% of net profit.",
-      icon: DollarSign,
-      highlight: "Most Popular",
-      features: [
-        "75% profit share to you",
-        "Complete property management",
-        "Marketing & bookings",
-        "Guest communication",
-        "Cleaning & maintenance",
-        "Dynamic pricing optimization"
+interface ServicesProps {
+  language: 'sk' | 'en';
+}
+
+const Services = ({ language }: ServicesProps) => {
+  const translations = {
+    sk: {
+      ourServices: 'Naše služby',
+      servicesDescription: 'Kompletné služby pre maximálny zisk z vašej nehnuteľnosti.',
+      whatWeProvide: 'Čo poskytujeme',
+      bookCall: 'Rezervovať bezplatný hovor',
+      mostPopular: 'Najobľúbenejšie',
+      services: [
+        {
+          title: "Rozdelenie príjmov",
+          subtitle: "Program zdieľania zisku 75%/25%",
+          description: "Maximalizujte svoj príjem s naším transparentným systémom zdieľania zisku. Dostávate 75% čistého zisku.",
+          icon: DollarSign,
+          highlight: "Najobľúbenejšie",
+          features: [
+            "75% zdieľanie zisku pre vás",
+            "Kompletná správa nehnuteľnosti",
+            "Marketing a rezervácie",
+            "Komunikácia s hosťami",
+            "Upratovanie a údržba",
+            "Optimalizácia dynamického oceňovania"
+          ]
+        },
+        {
+          title: "Profesionálna správa",
+          subtitle: "Správa nehnuteľností s plným servisom",
+          description: "Kompletná starostlivosť o vašu nehnuteľnosť prostredníctvom našej služby správy krátkodobých prenájmov.",
+          icon: FileText,
+          features: [
+            "Kompletná správa nehnuteľnosti",
+            "Profesionálne služby pre hostí", 
+            "Marketing a reklama",
+            "Koordinácia údržby",
+            "Opravy do 50 EUR mesačne",
+            "Firemné partnerstvá"
+          ]
+        },
+        {
+          title: "Fixný prenájom",
+          subtitle: "Garantovaný mesačný príjem",
+          description: "Fixný mesačný príjem bez rizika voľných období.",
+          icon: Shield,
+          features: [
+            "Garantovaná mesačná platba",
+            "Žiadne riziko voľného obdobia",
+            "Možné vylepšenia zmluvy",
+            "Profesionálne fotografovanie",
+            "Pravidelné upratovanie",
+            "Systematická údržba"
+          ]
+        }
+      ],
+      additionalServices: [
+        { icon: Users, title: "Kompletná správa nehnuteľnosti", description: "Správa nehnuteľnosti bez starostí" },
+        { icon: MessageCircle, title: "Komunikácia s hosťami", description: "Pred, počas a po pobyte" },
+        { icon: Camera, title: "Profesionálne fotografovanie", description: "Ohromujúca prezentácia na platformách" },
+        { icon: Wrench, title: "Údržba a opravy", description: "Opravy pokryté do 50 EUR mesačne" },
+        { icon: Banknote, title: "Firemné partnerstvá", description: "Dlhodobé a krátkodobé prenájmy" },
+        { icon: Key, title: "Smartlock a online check-in", description: "Bezpečnosť a kontrola pre hostí" },
+        { icon: Gift, title: "Spolupráca s firmami", description: "Ubytovanie na dlhšie obdobie" },
+        { icon: Sparkles, title: "Pravidelné upratovanie", description: "Upratovanie hotelového štandardu s kontrolami" }
       ]
     },
-    {
-      title: "Professional Management",
-      subtitle: "Full-Service Property Management",
-      description: "Complete care for your property through our short-term rental management service.",
-      icon: FileText,
-      features: [
-        "Complete property management",
-        "Professional guest services", 
-        "Marketing & advertising",
-        "Maintenance coordination",
-        "Repairs up to 50 EUR monthly",
-        "Corporate partnerships"
-      ]
-    },
-    {
-      title: "Fixed Rental",
-      subtitle: "Guaranteed Monthly Income",
-      description: "Fixed monthly income without the risk of vacancy periods.",
-      icon: Shield,
-      features: [
-        "Guaranteed monthly payment",
-        "No vacancy risk",
-        "Possible contract upgrades",
-        "Professional photography",
-        "Regular cleaning",
-        "Systematic maintenance"
+    en: {
+      ourServices: 'Our Services',
+      servicesDescription: 'Complete services for maximum profit from your property.',
+      whatWeProvide: 'What We Provide',
+      bookCall: 'Book Your Free Intro Call',
+      mostPopular: 'Most Popular',
+      services: [
+        {
+          title: "Revenue Share",
+          subtitle: "Profit Share Program 75%/25%",
+          description: "Maximize your income with our transparent profit-sharing system. You receive 75% of net profit.",
+          icon: DollarSign,
+          highlight: "Most Popular",
+          features: [
+            "75% profit share to you",
+            "Complete property management",
+            "Marketing & bookings",
+            "Guest communication",
+            "Cleaning & maintenance",
+            "Dynamic pricing optimization"
+          ]
+        },
+        {
+          title: "Professional Management",
+          subtitle: "Full-Service Property Management",
+          description: "Complete care for your property through our short-term rental management service.",
+          icon: FileText,
+          features: [
+            "Complete property management",
+            "Professional guest services", 
+            "Marketing & advertising",
+            "Maintenance coordination",
+            "Repairs up to 50 EUR monthly",
+            "Corporate partnerships"
+          ]
+        },
+        {
+          title: "Fixed Rental",
+          subtitle: "Guaranteed Monthly Income",
+          description: "Fixed monthly income without the risk of vacancy periods.",
+          icon: Shield,
+          features: [
+            "Guaranteed monthly payment",
+            "No vacancy risk",
+            "Possible contract upgrades",
+            "Professional photography",
+            "Regular cleaning",
+            "Systematic maintenance"
+          ]
+        }
+      ],
+      additionalServices: [
+        { icon: Users, title: "Complete Property Management", description: "Property management without worries" },
+        { icon: MessageCircle, title: "Guest Communication", description: "Before, during and after stay" },
+        { icon: Camera, title: "Professional Photography", description: "Stunning presentation on platforms" },
+        { icon: Wrench, title: "Maintenance & Repairs", description: "Repairs covered up to 50 EUR monthly" },
+        { icon: Banknote, title: "Corporate Partnerships", description: "Long-term and short-term rentals" },
+        { icon: Key, title: "Smartlock & Online Check-in", description: "Security and control for guests" },
+        { icon: Gift, title: "Collaboration with Companies", description: "Extended timeframe accommodations" },
+        { icon: Sparkles, title: "Regular Cleaning", description: "Hotel-quality cleaning with controls" }
       ]
     }
-  ];
+  };
 
-  const additionalServices = [
-    { icon: Users, title: "Complete Property Management", description: "Property management without worries" },
-    { icon: MessageCircle, title: "Guest Communication", description: "Before, during and after stay" },
-    { icon: Camera, title: "Professional Photography", description: "Stunning presentation on platforms" },
-    { icon: Wrench, title: "Maintenance & Repairs", description: "Repairs covered up to 50 EUR monthly" },
-    { icon: Banknote, title: "Corporate Partnerships", description: "Long-term and short-term rentals" },
-    { icon: Key, title: "Smartlock & Online Check-in", description: "Security and control for guests" },
-    { icon: Gift, title: "Collaboration with Companies", description: "Extended timeframe accommodations" },
-    { icon: Sparkles, title: "Regular Cleaning", description: "Hotel-quality cleaning with controls" }
-  ];
+  const t = translations[language];
+  const services = t.services;
+  const additionalServices = t.additionalServices;
 
   return (
     <section id="services" className="py-20 bg-background">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Our Services</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">{t.ourServices}</h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Complete services for maximum profit from your property.
+            {t.servicesDescription}
           </p>
         </div>
 
@@ -116,9 +194,9 @@ const Services = () => {
 
         {/* Additional Services */}
         <div className="text-center mb-12">
-          <h3 className="text-2xl font-bold mb-4">What We Provide</h3>
+          <h3 className="text-2xl font-bold mb-4">{t.whatWeProvide}</h3>
           <p className="text-muted-foreground">
-            Complete services for maximum profit from your property.
+            {t.servicesDescription}
           </p>
         </div>
 
@@ -142,7 +220,7 @@ const Services = () => {
             asChild
           >
             <a href="https://calendar.app.google/E1pQYouK2gbYs2ZR7" target="_blank" rel="noopener noreferrer">
-              Book Your Free Intro Call
+              {t.bookCall}
             </a>
           </Button>
         </div>
