@@ -5,6 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
 import { Mail, Phone, MapPin } from "lucide-react";
+import emailjs from '@emailjs/browser';
 
 interface ContactProps {
   language: 'sk' | 'en';
@@ -41,8 +42,8 @@ const Contact = ({ language }: ContactProps) => {
       readyToStart: 'Pripravení začať?',
       opportunity: 'Momentálne prijímame našich prvých 3 klientov. Nevynechajte túto príležitosť.',
       bookFreeCall: 'Rezervovať bezplatný hovor',
-      messagePrepared: 'Správa pripravená!',
-      emailWillOpen: 'Váš emailový klient sa otvorí na odoslanie správy.',
+      messageSent: 'Správa odoslaná!',
+      messageSentSuccess: 'Ďakujeme za vašu správu. Čoskoro vás budeme kontaktovať.',
       error: 'Chyba',
       errorMessage: 'Niečo sa pokazilo. Skúste to znova.'
     },
@@ -66,8 +67,8 @@ const Contact = ({ language }: ContactProps) => {
       readyToStart: 'Ready to get started?',
       opportunity: 'We\'re currently onboarding our first 3 clients. Don\'t miss out on this opportunity.',
       bookFreeCall: 'Book Free Intro Call',
-      messagePrepared: 'Message prepared!',
-      emailWillOpen: 'Your email client will open to send the message.',
+      messageSent: 'Message sent!',
+      messageSentSuccess: 'Thank you for your message. We will get back to you soon.',
       error: 'Error',
       errorMessage: 'Something went wrong. Please try again.'
     }
@@ -80,32 +81,75 @@ const Contact = ({ language }: ContactProps) => {
     setIsSubmitting(true);
 
     try {
-      // In a real application, you would send this to your backend
-      // For now, we'll simulate the email functionality
-      const emailBody = `
-Name: ${formData.name}
-Email: ${formData.email}
-Phone: ${formData.phone}
+      // Check if environment variables are loaded
+      const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+      const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+      const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
 
-Message:
-${formData.message}
-      `;
+      console.log('EmailJS Config:', { publicKey, serviceId, templateId });
 
-      // Create mailto link
-      const mailtoLink = `mailto:kostka.smn@gmail.com?subject=Contact Form Submission&body=${encodeURIComponent(emailBody)}`;
-      window.location.href = mailtoLink;
+      if (!publicKey || !serviceId || !templateId) {
+        throw new Error('EmailJS configuration is missing. Please check your .env file.');
+      }
 
-      toast({
-        title: t.messagePrepared,
-        description: t.emailWillOpen,
+      // Initialize EmailJS with your public key
+      emailjs.init(publicKey);
+
+      // Send email using EmailJS with minimal parameters first
+      const templateParams = {
+        from_name: formData.name,
+        from_email: formData.email,
+        message: formData.message,
+      };
+
+      console.log('Template params:', templateParams);
+      console.log('Sending to service:', serviceId, 'template:', templateId);
+
+      // Try to send the email
+      const result = await emailjs.send(
+        serviceId,
+        templateId,
+        templateParams
+      ).catch((emailError) => {
+        console.error('EmailJS send error:', emailError);
+        console.error('Error type:', typeof emailError);
+        console.error('Error keys:', Object.keys(emailError || {}));
+        throw new Error(`EmailJS send failed: ${emailError?.message || emailError?.text || JSON.stringify(emailError)}`);
       });
 
-      // Reset form
-      setFormData({ name: "", email: "", phone: "", message: "" });
+      console.log('EmailJS Result:', result);
+
+      if (result.status === 200) {
+        toast({
+          title: t.messageSent,
+          description: t.messageSentSuccess,
+        });
+
+        // Reset form
+        setFormData({ name: "", email: "", phone: "", message: "" });
+      } else {
+        throw new Error(`EmailJS returned status: ${result.status}`);
+      }
     } catch (error) {
+      console.error('EmailJS error:', error);
+      console.error('Error details:', {
+        message: error instanceof Error ? error.message : 'Unknown error',
+        stack: error instanceof Error ? error.stack : undefined,
+        error: error
+      });
+      
+      let errorMessage = t.errorMessage;
+      if (error instanceof Error) {
+        errorMessage = `${t.errorMessage} Error: ${error.message}`;
+      } else if (typeof error === 'string') {
+        errorMessage = `${t.errorMessage} Error: ${error}`;
+      } else if (error && typeof error === 'object') {
+        errorMessage = `${t.errorMessage} Error: ${JSON.stringify(error)}`;
+      }
+      
       toast({
         title: t.error,
-        description: t.errorMessage,
+        description: errorMessage,
         variant: "destructive",
       });
     } finally {
