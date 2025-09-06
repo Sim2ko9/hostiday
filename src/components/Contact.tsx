@@ -81,10 +81,10 @@ const Contact = ({ language }: ContactProps) => {
     setIsSubmitting(true);
 
     try {
-      // Check if environment variables are loaded
-      const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
-      const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
-      const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+      // Check if environment variables are loaded (fallback to hardcoded values for production)
+      const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY || 'exbHDoJ5l2gMa-Mmd';
+      const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID || 'service_59s7kfc';
+      const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID || 'template_sri88v8';
 
       console.log('EmailJS Config:', { publicKey, serviceId, templateId });
 
