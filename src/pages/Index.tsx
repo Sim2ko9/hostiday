@@ -10,7 +10,7 @@ const Index = () => {
   const [language, setLanguage] = useState<'sk' | 'en'>('sk');
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-background text-foreground">
       <Navigation language={language} onLanguageChange={setLanguage} />
       <Hero language={language} />
       <Calculator language={language} />
