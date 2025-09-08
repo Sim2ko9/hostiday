@@ -1,5 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
+import { Menu, X } from "lucide-react";
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import hostidayLogo from "@/assets/NewLogo.png";
 
 interface NavigationProps {
@@ -8,9 +10,12 @@ interface NavigationProps {
 }
 
 const Navigation = ({ language, onLanguageChange }: NavigationProps) => {
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
     element?.scrollIntoView({ behavior: 'smooth' });
+    setIsMobileMenuOpen(false); // Close mobile menu after navigation
   };
 
   const translations = {
@@ -18,13 +23,15 @@ const Navigation = ({ language, onLanguageChange }: NavigationProps) => {
       services: 'Služby',
       howItWorks: 'Ako to funguje',
       pricing: 'Cenník',
-      bookCall: 'Rezervovať hovor'
+      bookCall: 'Rezervovať hovor',
+      language: 'Jazyk'
     },
     en: {
       services: 'Services',
       howItWorks: 'How it Works',
       pricing: 'Pricing',
-      bookCall: 'Book Intro Call'
+      bookCall: 'Book Intro Call',
+      language: 'Language'
     }
   };
 
@@ -87,6 +94,75 @@ const Navigation = ({ language, onLanguageChange }: NavigationProps) => {
                 {t.bookCall}
               </a>
             </Button>
+          </div>
+
+          {/* Mobile Menu Button */}
+          <div className="md:hidden">
+            <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
+              <SheetTrigger asChild>
+                <Button variant="ghost" size="sm" className="text-white hover:bg-white/10">
+                  <Menu className="h-6 w-6" />
+                </Button>
+              </SheetTrigger>
+              <SheetContent side="right" className="w-[300px] bg-gray-900 text-white">
+                <div className="flex flex-col space-y-6 mt-8">
+                  {/* Mobile Navigation Links */}
+                  <div className="space-y-4">
+                    <button 
+                      onClick={() => scrollToSection('our-services')}
+                      className="block w-full text-left text-lg font-medium hover:text-white/80 transition-colors"
+                    >
+                      {t.services}
+                    </button>
+                    <button 
+                      onClick={() => scrollToSection('services')}
+                      className="block w-full text-left text-lg font-medium hover:text-white/80 transition-colors"
+                    >
+                      {t.pricing}
+                    </button>
+                  </div>
+
+                  {/* Language Selection */}
+                  <div className="border-t border-gray-700 pt-6">
+                    <h3 className="text-sm font-semibold text-gray-300 mb-4">{t.language}</h3>
+                    <div className="flex space-x-2">
+                      <button
+                        onClick={() => onLanguageChange('sk')}
+                        className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
+                          language === 'sk' 
+                            ? 'bg-white text-gray-900' 
+                            : 'bg-gray-800 text-white hover:bg-gray-700'
+                        }`}
+                      >
+                        SK
+                      </button>
+                      <button
+                        onClick={() => onLanguageChange('en')}
+                        className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
+                          language === 'en' 
+                            ? 'bg-white text-gray-900' 
+                            : 'bg-gray-800 text-white hover:bg-gray-700'
+                        }`}
+                      >
+                        EN
+                      </button>
+                    </div>
+                  </div>
+
+                  {/* Call to Action Button */}
+                  <div className="border-t border-gray-700 pt-6">
+                    <Button 
+                      className="w-full bg-white text-gray-900 hover:bg-white/90"
+                      asChild
+                    >
+                      <a href="https://calendar.app.google/E1pQYouK2gbYs2ZR7" target="_blank" rel="noopener noreferrer">
+                        {t.bookCall}
+                      </a>
+                    </Button>
+                  </div>
+                </div>
+              </SheetContent>
+            </Sheet>
           </div>
         </div>
       </div>

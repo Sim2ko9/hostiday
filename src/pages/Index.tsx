@@ -16,7 +16,7 @@ const Index = () => {
       <Calculator language={language} />
       <Services language={language} />
       <Contact language={language} />
-      <Footer language={language} />
+      <Footer language={language} onLanguageChange={setLanguage} />
     </div>
   );
 };

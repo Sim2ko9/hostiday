@@ -3,9 +3,10 @@ import { Link } from "react-router-dom";
 
 interface FooterProps {
   language: 'sk' | 'en';
+  onLanguageChange?: (lang: 'sk' | 'en') => void;
 }
 
-const Footer = ({ language }: FooterProps) => {
+const Footer = ({ language, onLanguageChange }: FooterProps) => {
   const translations = {
     sk: {
       description: 'Zlepšujeme správu vašich krátkodobých prenájmov oslobodením vášho času.',
@@ -18,6 +19,7 @@ const Footer = ({ language }: FooterProps) => {
       privacyPolicy: 'Zásady ochrany súkromia',
       termsOfService: 'Podmienky služby',
       connect: 'Kontakt',
+      language: 'Jazyk',
       rightsReserved: 'Všetky práva vyhradené.'
     },
     en: {
@@ -31,6 +33,7 @@ const Footer = ({ language }: FooterProps) => {
       privacyPolicy: 'Privacy Policy',
       termsOfService: 'Terms of Service',
       connect: 'Connect',
+      language: 'Language',
       rightsReserved: 'All rights reserved.'
     }
   };
@@ -40,7 +43,7 @@ const Footer = ({ language }: FooterProps) => {
   return (
     <footer className="bg-gray-900 text-white py-16">
       <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-5 gap-8">
           {/* Brand Section */}
           <div className="md:col-span-1 pl-8 pr-16">
             <div className="flex items-center space-x-3 mb-4">
@@ -108,7 +111,7 @@ const Footer = ({ language }: FooterProps) => {
           </div>
 
           {/* Connect */}
-          <div className="pr-8">
+          <div className="pr-4">
             <h3 className="text-lg font-semibold mb-4">{t.connect}</h3>
             <div className="flex space-x-4">
               <a 
@@ -121,6 +124,35 @@ const Footer = ({ language }: FooterProps) => {
               </a>
             </div>
           </div>
+
+          {/* Language Selection */}
+          {onLanguageChange && (
+            <div className="pr-8">
+              <h3 className="text-lg font-semibold mb-4">{t.language}</h3>
+              <div className="flex space-x-2">
+                <button
+                  onClick={() => onLanguageChange('sk')}
+                  className={`px-3 py-2 rounded text-sm font-medium transition-colors ${
+                    language === 'sk' 
+                      ? 'bg-white text-gray-900' 
+                      : 'bg-gray-800 text-white hover:bg-gray-700'
+                  }`}
+                >
+                  SK
+                </button>
+                <button
+                  onClick={() => onLanguageChange('en')}
+                  className={`px-3 py-2 rounded text-sm font-medium transition-colors ${
+                    language === 'en' 
+                      ? 'bg-white text-gray-900' 
+                      : 'bg-gray-800 text-white hover:bg-gray-700'
+                  }`}
+                >
+                  EN
+                </button>
+              </div>
+            </div>
+          )}
         </div>
 
         <div className="border-t border-gray-800 mt-12 pt-8 text-center">
