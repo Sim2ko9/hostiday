@@ -6,7 +6,7 @@ import { copyFileSync, existsSync } from "fs";
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
-  base: mode === 'production' && process.env.VERCEL ? '/' : mode === 'production' && process.env.GITHUB_PAGES ? '/' : '/',
+  base: mode === 'production' && process.env.VERCEL ? '/' : mode === 'production' && process.env.GITHUB_PAGES ? '/hostiday/' : '/',
   server: {
     host: "::",
     port: 8080,
